@@ -7,7 +7,9 @@ module.exports = {
     extend: {
       colors: {
         'defaultColor': '#9543FF',
-        'primaryColor': '#763FBC'
+        'primaryColor': '#763FBC',
+        'defaultFontColor': '#240F4F',
+        'secondFontColor': '#8789A3'
       },
 
       fontFamily: {
