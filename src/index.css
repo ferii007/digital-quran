@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  @apply font-gilgan;
+}
+
+.heptagon {
+  width: 200px;
+  aspect-ratio: 1;
+  clip-path: polygon(100.00% 50.00%,86.03% 64.92%,85.36% 85.36%,64.92% 86.03%,50.00% 100.00%,35.08% 86.03%,14.64% 85.36%,13.97% 64.92%,0.00% 50.00%,13.97% 35.08%,14.64% 14.64%,35.08% 13.97%,50.00% 0.00%,64.92% 13.97%,85.36% 14.64%,86.03% 35.08%,100.00% 50.00%,86.03% 64.92%,calc(86.03% - 14.41px) calc(64.92% - 5.97px),calc(100.00% - 20.00px) calc(50.00% - -0.00px),calc(86.03% - 14.41px) calc(35.08% - -5.97px),calc(85.36% - 14.14px) calc(14.64% - -14.14px),calc(64.92% - 5.97px) calc(13.97% - -14.41px),calc(50.00% - -0.00px) calc(0.00% - -20.00px),calc(35.08% - -5.97px) calc(13.97% - -14.41px),calc(14.64% - -14.14px) calc(14.64% - -14.14px),calc(13.97% - -14.41px) calc(35.08% - -5.97px),calc(0.00% - -20.00px) calc(50.00% - 0.00px),calc(13.97% - -14.41px) calc(64.92% - 5.97px),calc(14.64% - -14.14px) calc(85.36% - 14.14px),calc(35.08% - -5.97px) calc(86.03% - 14.41px),calc(50.00% - 0.00px) calc(100.00% - 20.00px),calc(64.92% - 5.97px) calc(86.03% - 14.41px),calc(85.36% - 14.14px) calc(85.36% - 14.14px),calc(86.03% - 14.41px) calc(64.92% - 5.97px),calc(100.00% - 20.00px) calc(50.00% - 0.00px));
+  background: black;
+}
+
+@font-face {
+  font-family: "gilgan";
+  src: url("./assets/fonts/Gilgan.otf");
+}
