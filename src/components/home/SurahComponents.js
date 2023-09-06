@@ -30,6 +30,7 @@ const SurahComponents = () => {
                 open: true,
                 data: response.data.data
             });
+            console.log('response', response.data.data)
         } catch (error) {
             
         }
