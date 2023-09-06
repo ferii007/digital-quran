@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react"
+import { useDispatch } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as actionCreators from './../../store/actions/index'
 import axios from "axios"
 import heptagonImg from './../../assets/image/heptagon.svg'
 
 const SurahComponents = () => {
+    const dispatch = useDispatch();
+	const { readSurah } = bindActionCreators(actionCreators, dispatch);
     const [dataSurah, setDataSurah] = useState([]);
 
     useEffect(() => {
@@ -17,9 +22,22 @@ const SurahComponents = () => {
             
         }
     }
+
+    const readDetailSurah = async (noSurah) => {
+        try {
+            const response = await axios.get(`https://equran.id/api/v2/surat/${noSurah}`);
+            readSurah({
+                open: true,
+                data: response.data.data
+            });
+        } catch (error) {
+            
+        }
+    }
+
     return(
         dataSurah.length !== 0 && dataSurah.map((surah, index) => (
-            <div key={index} className="card relative">
+            <div key={index} className="card relative" onClick={() => readDetailSurah(surah.nomor)}>
                 <div className='flex justify-between items-center'>
                     <div className='flex items-center space-x-4'>
                         <div className='relative flex justify-center'>

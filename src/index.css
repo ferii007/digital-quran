@@ -6,34 +6,16 @@
   @apply font-gilgan;
 }
 
-.slide-up-enter {
-  transform: translateY(100%);
-  opacity: 0;
-}
-
-.slide-up-enter-active {
-  transform: translateY(0);
-  opacity: 1;
-  transition: transform 700ms ease-in-out, opacity 700ms ease-in-out;
-}
-
-.slide-up-exit {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.slide-up-exit-active {
-  transform: translateY(100%);
-  opacity: 0;
-  transition: transform 700ms ease-in-out, opacity 700ms ease-in-out;
-}
-
 @font-face {
   font-family: "gilgan";
   src: url("./assets/fonts/Gilgan.otf");
 }
 
 @layer utilities {
+  .card-gradient {
+    @apply py-[7%] px-2 rounded-xl;
+    background: linear-gradient(135deg, #DF98FA 0%, #9055FF 100%);
+  }
   .card {
     @apply bg-white shadow-lg rounded-lg py-5 px-4 mb-6 before:absolute before:content-[''] before:bg-primaryColor before:p-1 before:left-0 before:top-0 before:bottom-0
   }

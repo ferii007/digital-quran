@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { CSSTransition } from "react-transition-group"
 import PrayComponents from "./PrayComponents"
 import SurahComponents from "./SurahComponents"
 
@@ -20,27 +19,9 @@ const HomePage = () => {
                 <button>Tafsir</button>
             </div>
 
-            <CSSTransition
-                in={activeCategory === "surat"}
-                timeout={1000}
-                classNames="slide-up"
-                unmountOnExit
-            >
-                <div>
-                    <SurahComponents />
-                </div>
-            </CSSTransition>
+            {activeCategory === "surat" && <SurahComponents />}
 
-            <CSSTransition
-                in={activeCategory === "doa"}
-                timeout={1000}
-                classNames="slide-up"
-                unmountOnExit
-            >
-                <div>
-                    <PrayComponents />
-                </div>
-            </CSSTransition>
+            {activeCategory === "doa" && <PrayComponents />}
         </section>
     )
 }
