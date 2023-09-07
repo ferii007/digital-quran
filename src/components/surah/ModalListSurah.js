@@ -3,7 +3,6 @@ import { bindActionCreators } from 'redux'
 import * as actionCreators from '../../store/actions/index'
 import { Icon } from '@iconify/react'
 import heptagonImg from './../../assets/image/heptagon.svg'
-import { useEffect } from 'react'
 
 const ModalListSurah = ({setShowModalListSurah}) => {
     const dispatch = useDispatch();
