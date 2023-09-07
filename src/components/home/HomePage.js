@@ -4,6 +4,7 @@ import SurahComponents from "./SurahComponents"
 
 const HomePage = () => {
     const [activeCategory, setActiveCategory] = useState('surat')
+
     return(
         <section className="px-4 py-8">
             <div className="flex space-x-4 justify-around border-b-2 border-slate-100 mb-5">

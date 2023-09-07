@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actionCreators from './../../store/actions/index'
@@ -14,6 +14,27 @@ const SurahPage = () => {
     const [audioSrc, setAudioSrc] = useState("");
     const [audioFullSrc, setAudioFullSrc] = useState("");
     const [audioStatus, setAudioStatus] = useState({});
+    const [currentBatch, setCurrentBatch] = useState(1);
+    const ayatPerBatch = 10;
+    const batchInterval = 1000;
+
+    useEffect(() => {
+        const totalBatches = Math.ceil(detailSurah.ayat.length / ayatPerBatch);
+        let batchCounter = 1;
+
+        const interval = setInterval(() => {
+            if (batchCounter <= totalBatches) {
+                setCurrentBatch(batchCounter);
+                batchCounter++;
+            } else {
+                clearInterval(interval);
+            }
+        }, batchInterval);
+
+        return () => {
+            clearInterval(interval);
+        };
+    }, [detailSurah]);
 
 
     const toggleAudioStatus = (noAyat) => {
@@ -142,14 +163,14 @@ const SurahPage = () => {
 
                 <div className='bg-slate-50 p-5 mt-20 rounded-md'>
                     {
-                        detailSurah.ayat.map((ayat, index) => (
+                        detailSurah.ayat.slice(0, currentBatch * ayatPerBatch).map((ayat, index) => (
                             <div key={index} className='mb-16'>
                                 <h1 className='text-right text-2xl font-bold tracking-wide leading-relaxed mb-2'>{ayat.teksArab}</h1>
                                 <h3 className='text-sm tracking-widest text-slate-700 mb-1'>{ayat.teksLatin}</h3>
                                 <h3 className='text-sm opacity-40 tracking-wide italic mb-4'>{ayat.teksIndonesia}</h3>
 
                                 <div className='card-2'>
-                                    <h5 className='bg-defaultColor text-white w-7 h-7 rounded-full flex justify-center items-center text-sm'>{ayat.nomorAyat}</h5>
+                                    <h5 className='bg-defaultColor text-white w-8 h-8 rounded-full flex justify-center items-center text-sm'>{ayat.nomorAyat}</h5>
 
                                     <div className='flex items-center space-x-3 text-defaultColor'>
                                     

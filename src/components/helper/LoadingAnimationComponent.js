@@ -19,8 +19,8 @@ const LoadingAnimationComponent = () => {
     }, [isLoadingAnimation])
     
     return(
-        <div className={`bg-white absolute z-50 top-0 bottom-0 left-0 right-0 p-10 w-screen h-screen overflow-hidden`}>
-            <div id="animation" className="flex justify-center items-center w-full h-full" />
+        <div className={`bg-white absolute z-50 top-0 bottom-0 left-0 right-0 flex items-center`}>
+            <div id="animation" className="w-96 h-96 m-auto" />
         </div>
     )
 }

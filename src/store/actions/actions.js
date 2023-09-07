@@ -23,3 +23,12 @@ export const loadingAnimation = (flag = null) => {
         })
     }
 }
+
+export const waitAnimation = (flag = null) => {
+    return (dispatch) => {
+        dispatch({
+            type: 'wait_animation',
+            payload: flag
+        })
+    }
+}
