@@ -3,12 +3,15 @@ import { useSelector, useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actionCreators from './../../store/actions/index'
 import { Icon } from '@iconify/react'
+import { CSSTransition } from 'react-transition-group'
 import quranImg from './../../assets/image/quran.svg'
+import ModalListSurah from './ModalListSurah'
 
 const SurahPage = () => {
     const dispatch = useDispatch();
 	const { readSurah } = bindActionCreators(actionCreators, dispatch);
     const detailSurah = useSelector((state) => state.readSurah.data);
+    const [showModalListSurah, setShowModalListSurah] = useState(false);
     const [isAudioPlaying, setIsAudioPlaying] = useState(false);
     const [isFullAudioPlaying, setIsFullAudioPlaying] = useState(false);
     const [audioSrc, setAudioSrc] = useState("");
@@ -118,16 +121,18 @@ const SurahPage = () => {
     };
       
     return(
-        <section className="px-3">
-            <div className='flex justify-between items-center text-primaryColor pt-12 px-3'>
-                <Icon icon="ic:twotone-arrow-back-ios" className='w-7 h-7' onClick={() => readSurah()} />
+        <section className="">
+            <div className='text-primaryColor pt-8 pb-4 sticky top-0 z-10 bg-white bg-opacity-50 backdrop-blur-md shadow-md'>
+                <div className='flex justify-between items-center px-5'>
+                    <Icon icon="ic:twotone-arrow-back-ios" className='w-7 h-7' onClick={() => readSurah()} />
 
-                <h1 className='text-2xl font-bold tracking-widest'>D-Qur'an</h1>    
+                    <h1 className='text-2xl font-bold tracking-widest'>D-Qur'an</h1>    
 
-                <Icon icon="simple-line-icons:book-open" className='w-7 h-7' />
+                    <Icon icon="simple-line-icons:book-open" className='w-7 h-7' onClick={() => setShowModalListSurah(true)} />
+                </div>
             </div>
 
-            <div className='py-24'>
+            <div className='py-24 px-3'>
                 <div className="card-gradient text-white relative overflow-hidden">
                     <div className=''>
                         <div className='flex items-start space-x-1'>
@@ -211,6 +216,10 @@ const SurahPage = () => {
                     />
                 }
             </div>
+            
+            <CSSTransition unmountOnExit in={showModalListSurah} timeout={500} classNames="slide-down">
+                <ModalListSurah setShowModalListSurah={setShowModalListSurah} />
+            </CSSTransition>
         </section>
     )
 }

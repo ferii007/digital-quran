@@ -1,6 +1,6 @@
-import { readSurah, loadingAnimation, waitAnimation } from './actions';
+import { readSurah, loadingAnimation, waitAnimation, dataSurah, readDetailSurah } from './actions';
 
 
 
 
-export { readSurah, loadingAnimation, waitAnimation }
+export { readSurah, loadingAnimation, waitAnimation, dataSurah, readDetailSurah }

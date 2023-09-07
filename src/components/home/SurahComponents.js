@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actionCreators from '../../store/actions/index'
@@ -8,9 +8,9 @@ import WaitAnimationComponent from "../helper/WaitAnimationComponent"
 
 const SurahComponents = () => {
     const dispatch = useDispatch();
-	const { readSurah, loadingAnimation, waitAnimation } = bindActionCreators(actionCreators, dispatch);
+	const { waitAnimation, dataSurah, readDetailSurah } = bindActionCreators(actionCreators, dispatch);
     const isWaitAnimation = useSelector((state) => state.waitAnimation);
-    const [dataSurah, setDataSurah] = useState([]);
+    const surah = useSelector((state) => state.dataSurah);
 
     useEffect(() => {
         getDataSurah();
@@ -23,7 +23,7 @@ const SurahComponents = () => {
         setTimeout(async () => {
             try {
                 const response = await axios.get("https://equran.id/api/v2/surat");
-                setDataSurah(response.data.data)
+                dataSurah(response.data.data)
                 waitAnimation(false)
             } catch (error) {
             
@@ -31,29 +31,12 @@ const SurahComponents = () => {
         }, 500);
     }
 
-    const readDetailSurah = async (noSurah) => {
-        loadingAnimation(true)
-        setTimeout(async () => {
-            try {
-                const response = await axios.get(`https://equran.id/api/v2/surat/${noSurah}`);
-                readSurah({
-                    open: true,
-                    data: response.data.data
-                });
-                loadingAnimation(false)
-                console.log('response', response.data.data)
-            } catch (error) {
-                loadingAnimation(false)
-            }
-        }, 1600);
-    }
-
     return(
         <>
             {isWaitAnimation &&  <WaitAnimationComponent />}
             
             {
-                !isWaitAnimation && dataSurah.length !== 0 && dataSurah.map((surah, index) => (
+                !isWaitAnimation && surah.length !== 0 && surah.map((surah, index) => (
                     <div key={index} className="card relative" onClick={() => readDetailSurah(surah.nomor)}>
                         <div className='flex justify-between items-center'>
                             <div className='flex items-center space-x-4'>
