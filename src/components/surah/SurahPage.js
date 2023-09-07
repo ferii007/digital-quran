@@ -1,9 +1,13 @@
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as actionCreators from './../../store/actions/index'
 import { Icon } from '@iconify/react'
 import quranImg from './../../assets/image/quran.svg'
 
 const SurahPage = () => {
+    const dispatch = useDispatch();
+	const { readSurah } = bindActionCreators(actionCreators, dispatch);
     const detailSurah = useSelector((state) => state.readSurah.data);
     const [isAudioPlaying, setIsAudioPlaying] = useState(false);
     const [isFullAudioPlaying, setIsFullAudioPlaying] = useState(false);
@@ -95,7 +99,7 @@ const SurahPage = () => {
     return(
         <section className="px-3">
             <div className='flex justify-between items-center text-primaryColor pt-12 px-3'>
-                <Icon icon="ic:twotone-arrow-back-ios" className='w-7 h-7' />
+                <Icon icon="ic:twotone-arrow-back-ios" className='w-7 h-7' onClick={() => readSurah()} />
 
                 <h1 className='text-2xl font-bold tracking-widest'>D-Qur'an</h1>    
 
