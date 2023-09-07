@@ -11,9 +11,6 @@
   src: url("./assets/fonts/Gilgan.otf");
 }
 
-body {
-  @apply max-w-2xl m-auto
-}
 @layer utilities {
   .card-gradient {
     @apply py-[7%] px-2 rounded-xl;

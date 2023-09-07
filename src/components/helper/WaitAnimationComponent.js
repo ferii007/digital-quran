@@ -19,7 +19,7 @@ const WaitAnimationComponent = () => {
     }, [isLoadingAnimation])
     
     return(
-        <div className={`translate-y-1/3`}>
+        <div className={``}>
             <div id="animation" className="w-72 h-72 m-auto" />
         </div>
     )
