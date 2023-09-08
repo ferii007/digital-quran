@@ -12,7 +12,7 @@ const HomePage = () => {
             
             <div className="py-8">
                 <div className="bg-white border-slate-100 border-b-2 bg-opacity-50 backdrop-blur-md sticky top-0 mb-5 z-10">
-                    <div className="flex space-x-4 justify-around px-3 py-4">
+                    <div className="flex space-x-4 justify-around px-3 py-3">
                         <button onClick={() => setActiveCategory("surat")} className={activeCategory === "surat" ? "category-active" : ""}>
                             Surat
                         </button>

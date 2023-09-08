@@ -11,7 +11,12 @@
   src: url("./assets/fonts/Gilgan.otf");
 }
 
+
 @layer utilities {
+  .top-shadow {
+    box-shadow: '0px -3px 7px rgba(0, 0, 0, 0.1)';
+  }
+
   .card-gradient {
     @apply py-[7%] px-2 rounded-xl;
     background: linear-gradient(135deg, #DF98FA 0%, #9055FF 100%);
@@ -31,6 +36,6 @@
   }
 
   .category-active {
-    @apply text-primaryColor font-bold relative before:absolute before:content-[''] before:border-b-2 before:border-primaryColor before:-left-0 before:w-full before:bottom-0
+    @apply text-primaryColor font-bold relative before:absolute before:content-[''] before:border-b-2 before:border-primaryColor before:-left-0 before:w-full before:-bottom-0 before:translate-y-[0.85rem]
   }
 }

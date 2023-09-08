@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import HomePage from "./components/home/HomePage"
 import SurahPage from "./components/surah/SurahPage"
 import LoadingAnimationComponent from "./components/helper/LoadingAnimationComponent"
+import Footer from './components/Footer';
 
 function App() {
   const isReadSurah = useSelector((state) => state.readSurah.open);
@@ -11,7 +12,13 @@ function App() {
   return (
     <>
       <main className={`${isLoadingAnimation ? 'hidden' : 'block'}`}>
-        {isReadSurah === false && <HomePage />}
+      {isReadSurah === false && (
+        <>
+          <HomePage />
+          
+          <Footer />
+        </>
+      )}
 
         {isReadSurah === true && <SurahPage />}
       </main>
