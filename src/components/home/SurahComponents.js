@@ -5,6 +5,7 @@ import * as actionCreators from '../../store/actions/index'
 import axios from "axios"
 import heptagonImg from './../../assets/image/heptagon.svg'
 import WaitAnimationComponent from "../helper/WaitAnimationComponent"
+import { saveDataSurahToIndexedDB, getDataSurahFromIndexedDB } from "../helper/indexedDB"
 
 const SurahComponents = () => {
     const dispatch = useDispatch();
@@ -17,18 +18,35 @@ const SurahComponents = () => {
         // eslint-disable-next-line
     }, [])
 
+    const getSurah = async () => {
+        try {
+            const response = await axios.get("https://equran.id/api/v2/surat");
+            dataSurah(response.data.data)
+            saveDataSurahToIndexedDB(response.data.data);
+            waitAnimation(false)
+        } catch (error) {
+        
+        }
+    }
+
     const getDataSurah = async () => {
         waitAnimation(true)
 
-        setTimeout(async () => {
-            try {
-                const response = await axios.get("https://equran.id/api/v2/surat");
-                dataSurah(response.data.data)
-                waitAnimation(false)
-            } catch (error) {
-            
-            }
-        }, 500);
+        try {
+            getDataSurahFromIndexedDB().then((data) => {
+                setTimeout(async () => {
+                    if (data.length !== 0) {
+                        console.log('Data dari IndexedDB:', data);
+                        dataSurah(data)
+                        waitAnimation(false)
+                    }else {
+                        getSurah();
+                    }
+                }, 500);
+            });
+        } catch (error) {
+            getSurah();
+        }
     }
 
     return(

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { saveDetailSurahToIndexedDB, getDetailSurahFromIndexedDB } from '../../components/helper/indexedDB';
 
 export const readSurah = (flag = null) => {
     return (dispatch) => {
@@ -45,20 +46,54 @@ export const dataSurah = (flag = null) => {
 
 
 // Global Function
+const readSurahAPI = (noSurah) => async (dispatch) => {
+    try {
+        const response = await axios.get(`https://equran.id/api/v2/surat/${noSurah}`);
+        dispatch(readSurah({
+            open: true,
+            data: response.data.data,
+        }));
+        dispatch(loadingAnimation(false));
+        saveDetailSurahToIndexedDB(response.data.data)
+        console.log('response', response.data.data);
+    } catch (error) {
+        dispatch(loadingAnimation(false));
+    }
+}
+
 export const readDetailSurah = (noSurah) => async (dispatch) => {
     dispatch(loadingAnimation(true));
 
-    setTimeout(async () => {
-        try {
-            const response = await axios.get(`https://equran.id/api/v2/surat/${noSurah}`);
-            dispatch(readSurah({
-                open: true,
-                data: response.data.data,
-            }));
-            dispatch(loadingAnimation(false));
-            console.log('response', response.data.data);
-        } catch (error) {
-            dispatch(loadingAnimation(false));
-        }
-    }, 1600);
-  };
+    try {
+        getDetailSurahFromIndexedDB(noSurah).then((data) => {
+            setTimeout(async () => {
+                if (data.result !== undefined) {
+                    dispatch(readSurah({
+                        open: true,
+                        data: data.result,
+                    }));
+                    dispatch(loadingAnimation(false));
+                }else {
+                    dispatch(readSurahAPI(noSurah))
+                }
+            }, 1600);
+        });
+    } catch (error) {
+        dispatch(readSurahAPI(noSurah));
+    }
+
+    // setTimeout(async () => {
+    //     try {
+    //         const response = await axios.get(`https://equran.id/api/v2/surat/${noSurah}`);
+    //         dispatch(readSurah({
+    //             open: true,
+    //             data: response.data.data,
+    //         }));
+    //         dispatch(loadingAnimation(false));
+    //         saveDetailSurahToIndexedDB(response.data.data)
+    //         console.log('response', response.data.data);
+    //     } catch (error) {
+    //         dispatch(loadingAnimation(false));
+    //     }
+    // }, 1600);
+};
