@@ -1,11 +1,8 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios'
+
 import heroImg from './../../assets/image/hero-img-2.png'
 
 const HeaderPage = () => {
-    // const [dataJadwalSholat, setDataJadwalSholat] = useState({});
-    // const [jadwalSholat, setJadwalSholat] = useState('');
-    // const [waktuSholat, setWaktuSholat] = useState('');
     const [waktuSekarang, setWaktuSekarang] = useState('00:00');
 
     const getTime = async () => {
@@ -32,22 +29,6 @@ const HeaderPage = () => {
         }, 5000);
     }, [])
       
-    useEffect(() => {
-        getJadwalSholat()
-    }, [])
-
-    const getJadwalSholat = async () => {
-        try {
-            // const kota = await axios.get(`https://api.myquran.com/v1/sholat/kota/cari/bandung`)
-            // console.log('kota', kota)
-            const response = await axios.get(`https://api.myquran.com/v1/sholat/jadwal/1219/2021/06/23`)
-            console.log('response-kota', response)
-            
-            // setDataJadwalSholat(response.data.data.jadwal)
-        } catch (error) {
-            
-        }
-    }
     return(
         <div className="relative">
                 <div className="absolute flex flex-col items-center w-full py-8">
