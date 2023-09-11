@@ -11,6 +11,28 @@
   src: url("./assets/fonts/Gilgan.otf");
 }
 
+body {
+  @apply bg-[#180B37]
+}
+
+.react-multi-carousel-dot-list {
+  @apply bg-white px-7 py-4 fixed bottom-0 left-0 right-0 top-shadow;
+  position: fixed !important;
+  padding: 1rem 1.75rem !important;
+  justify-content: space-around !important;
+}
+
+.header-bg {
+  position: absolute;
+  content: '';
+  background-image: url('./assets/image/pray-img/header-bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20rem;
+}
 
 @layer utilities {
   .top-shadow {
@@ -37,5 +59,9 @@
 
   .category-active {
     @apply text-primaryColor font-bold relative before:absolute before:content-[''] before:border-b-2 before:border-primaryColor before:-left-0 before:w-full before:-bottom-0 before:translate-y-[0.85rem]
+  }
+
+  .list-footer {
+    @apply relative before:content-[''] before:absolute before:-top-[1rem] before:-left-1.5 before:border-t-defaultColor before:border-t-4 before:w-11 before:origin-center before:transform before:-translate-y-1/2 before:transition-transform before:ease-in-out before:duration-500
   }
 }
