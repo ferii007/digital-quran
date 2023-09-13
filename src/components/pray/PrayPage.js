@@ -51,7 +51,7 @@ const PrayPage = () => {
 
     return(
         <>
-            <section className="relative h-screen">
+            <section className="relative h-full">
                 <div className="header-bg -z-10"></div>
                 
                 <div className="text-white font-bold px-8 py-6 sm:py-20 flex flex-col gap-2">
