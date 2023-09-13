@@ -10,11 +10,13 @@ import LoadingAnimationComponent from "./components/helper/LoadingAnimationCompo
 import Footer from './components/Footer'
 import PrayPage from './components/pray/PrayPage'
 import { useEffect } from 'react'
+import DoaPage from './components/doa/DoaPage'
 
 function App() {
   const dispatch = useDispatch();
 	const { currentTime } = bindActionCreators(actionCreators, dispatch);
   const isReadSurah = useSelector((state) => state.readSurah.open);
+  const isReadDoa = useSelector((state) => state.readDoa.open);
   const isLoadingAnimation = useSelector((state) => state.loadingAnimation);
 
   const responsive = {
@@ -49,7 +51,7 @@ function App() {
   return (
     <>
       <main className={`${isLoadingAnimation ? 'hidden' : 'block'}`}>
-      {isReadSurah === false && (
+      {isReadSurah === false && isReadDoa === false && (
         <>
           <Carousel
             keyBoardControl={false}
@@ -77,6 +79,7 @@ function App() {
       )}
 
         {isReadSurah === true && <SurahPage />}
+        {isReadDoa === true && <DoaPage />}
       </main>
 
       {

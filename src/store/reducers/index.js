@@ -5,6 +5,7 @@ import waitAnimationReducer from "./waitAnimationReducer";
 import dataSurahReducer from "./dataSurahReducer";
 import dataPrayTimeReducer from "./dataPrayTimeReducer";
 import currentTimeReducer from "./currentTimeReducer";
+import readDoaReducer from "./readDoaReducer";
 
 export default combineReducers({
     readSurah: readSurahReducer,
@@ -13,4 +14,5 @@ export default combineReducers({
     dataSurah: dataSurahReducer,
     dataPrayTime: dataPrayTimeReducer,
     currentTime: currentTimeReducer,
+    readDoa: readDoaReducer,
 });

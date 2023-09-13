@@ -9,7 +9,7 @@ import { saveDataSurahToIndexedDB, getDataSurahFromIndexedDB } from "../helper/i
 
 const SurahComponents = () => {
     const dispatch = useDispatch();
-	const { waitAnimation, dataSurah, readDetailSurah } = bindActionCreators(actionCreators, dispatch);
+	const { dataSurah, readDetailSurah } = bindActionCreators(actionCreators, dispatch);
     const isWaitAnimation = useSelector((state) => state.waitAnimation);
     const surah = useSelector((state) => state.dataSurah);
 
@@ -23,14 +23,14 @@ const SurahComponents = () => {
             const response = await axios.get("https://equran.id/api/v2/surat");
             dataSurah(response.data.data)
             saveDataSurahToIndexedDB(response.data.data);
-            waitAnimation(false)
+            // waitAnimation(false)
         } catch (error) {
         
         }
     }
 
     const getDataSurah = async () => {
-        waitAnimation(true)
+        // waitAnimation(true)
 
         try {
             getDataSurahFromIndexedDB().then((data) => {
@@ -38,7 +38,7 @@ const SurahComponents = () => {
                     if (data.length !== 0) {
                         // console.log('Data dari IndexedDB:', data);
                         dataSurah(data)
-                        waitAnimation(false)
+                        // waitAnimation(false)
                     }else {
                         getSurah();
                     }
@@ -55,7 +55,7 @@ const SurahComponents = () => {
             <div className="card-container">
                 {
                     !isWaitAnimation && surah.length !== 0 && surah.map((surah, index) => (
-                        <div key={index} className="card relative w-1/3" onClick={() => readDetailSurah(surah.nomor)}>
+                        <div key={index} className="card relative" onClick={() => readDetailSurah(surah.nomor)}>
                             <div className='flex justify-between items-center'>
                                 <div className='flex items-center space-x-4'>
                                     <div className='relative flex justify-center'>

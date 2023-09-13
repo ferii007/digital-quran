@@ -55,27 +55,27 @@ const PrayPage = () => {
                 <div className="header-bg -z-10"></div>
                 
                 <div className="text-white font-bold px-8 py-6 sm:py-20 flex flex-col gap-2">
-                    <h3 className="text-3xl sm:text-5xl tracking-widest ">Jadwal Sholat</h3>
-                    <h4 className="text-xl sm:text-3xl tracking-wide capitalize">{lokasiJadwal}</h4>
-                    <h5 className="text-xl sm:text-3xl tracking-widest">{currentTime}</h5>
+                    <h3 className="text-3xl sm:text-4xl tracking-widest ">Jadwal Sholat</h3>
+                    <h4 className="text-xl sm:text-2xl tracking-wide capitalize">{lokasiJadwal}</h4>
+                    <h5 className="text-xl sm:text-2xl tracking-widest">{currentTime}</h5>
                 </div>
 
-                <h1 className="text-center text-white text-3xl sm:text-5xl font-bold tracking-wider mt-20 mb-16 capitalize">{nextPrayerTime}</h1>
+                <h1 className="text-center text-white text-3xl sm:text-4xl font-bold tracking-wider mt-20 mb-16 capitalize">{nextPrayerTime}</h1>
 
                 <div className="px-8">
-                    <div className="flex items-center justify-between bg-slate-100 font-bold py-5 px-4 text-xl sm:text-3xl tracking-wide rounded-full">
+                    <div className="flex items-center justify-between bg-slate-100 font-bold py-5 px-4 text-lg sm:text-xl tracking-wide rounded-full">
                         <Icon icon="ic:twotone-arrow-back-ios" className='w-7 h-7 sm:w-9 sm:h-9'  onClick={() => handleBackDay()} />
                         {formattedDate}
                         <Icon icon="ic:twotone-arrow-back-ios" className='w-7 h-7 sm:w-9 sm:h-9 rotate-180' onClick={() => handleNextDay()} />
                     </div>
                 </div>
 
-                <div className="text-white text-xl sm:text-2xl font-bold tracking-wider py-10 sm:py-24 flex flex-col gap-5">
+                <div className="text-white text-lg sm:text-xl font-bold tracking-wider py-10 sm:py-24 flex flex-col gap-5">
                     {
                         semuaJadwal.length !== 0 &&
                         semuaJadwal.map((data, index) => (
-                            <div key={index} className="grid grid-cols-11 sm:grid-cols-12 px-6 sm:px-12 items-center">
-                                <div className='col-span-4 sm:col-span-5'>
+                            <div key={index} className="grid grid-cols-12 sm:grid-cols-12 px-6 sm:px-12 items-center">
+                                <div className='col-span-5 sm:col-span-5'>
                                     <Icon icon={icon[index]} className="w-10 h-10 sm:w-12 sm:h-12 " />
                                 </div>
                                 <span className="col-span-5 sm:col-span-6 capitalize">{data[0]}</span>

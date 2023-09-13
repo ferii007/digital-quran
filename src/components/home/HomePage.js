@@ -1,5 +1,5 @@
 import { useState } from "react"
-import PrayComponents from "./PrayComponents"
+import DoaComponent from "./DoaComponent"
 import SurahComponents from "./SurahComponents"
 import HeaderPage from "./HeaderPage"
 
@@ -29,7 +29,7 @@ const HomePage = () => {
                 <div className="px-4">
                     {activeCategory === "surat" && <SurahComponents />}
 
-                    {activeCategory === "doa" && <PrayComponents />}
+                    {activeCategory === "doa" && <DoaComponent />}
                 </div>
             </div>
         </section>

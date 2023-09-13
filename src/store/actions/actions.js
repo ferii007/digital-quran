@@ -17,6 +17,22 @@ export const readSurah = (flag = null) => {
     }
 }
 
+export const readDoa = (flag = null) => {
+    return (dispatch) => {
+        if (flag == null) {
+            dispatch({
+                type: 'unread_doa',
+                payload: flag
+            })
+        }else {
+            dispatch({
+                type: 'read_doa',
+                payload: flag
+            })
+        }
+    }
+}
+
 export const loadingAnimation = (flag = null) => {
     return (dispatch) => {
         dispatch({
