@@ -13,12 +13,12 @@ const HeaderPage = () => {
       
     return(
         <div className="relative">
-            <div className="absolute flex flex-col items-center w-full py-8">
-                <h1 className="text-emerald-400 drop-shadow-xl text-4xl font-bold tracking-wide mb-3">D-Qur'an</h1>
-                <h1 className="text-emerald-400 text-4xl font-bold tracking-widest capitalize">{currentTime}</h1>
-                <h1 className="text-slate-200 font-bold tracking-widest">{lokasiJadwal}</h1>
+            <div className="absolute flex flex-col items-center w-full py-8 sm:py-24">
+                <h1 className="text-emerald-400 drop-shadow-xl text-4xl sm:text-6xl font-bold tracking-wide mb-3">D-Qur'an</h1>
+                <h1 className="text-emerald-400 text-4xl sm:text-6xl font-bold tracking-widest capitalize">{currentTime}</h1>
+                <h1 className="text-slate-200 sm:text-xl font-bold tracking-widest">{lokasiJadwal}</h1>
 
-                <div className="text-white bg-emerald-400 bg-opacity-40 backdrop-blur-sm rounded-md px-7 py-3 font-bold tracking-widest mt-4">
+                <div className="text-white bg-emerald-400 bg-opacity-40 backdrop-blur-sm rounded-md px-7 py-3 font-bold tracking-widest mt-4 sm:text-xl">
                     <span className='capitalize'>{nextPrayerTime}</span>
                 </div>
             </div>

@@ -12,17 +12,22 @@
 }
 
 body {
-  @apply bg-[#180B37]
+  @apply max-w-[860px] m-auto
+}
+
+#root {
+  @apply bg-[#180B37] 
 }
 
 .react-multi-carousel-dot-list {
-  @apply bg-white px-7 py-4 fixed bottom-0 left-0 right-0 top-shadow;
+  @apply bg-white px-7 py-4 bottom-0 left-0 right-0 top-shadow;
   position: fixed !important;
   padding: 1rem 1.75rem !important;
   justify-content: space-around !important;
 }
 
 .header-bg {
+  @apply h-80 sm:h-96;
   position: absolute;
   content: '';
   background-image: url('./assets/image/pray-img/header-bg.png');
@@ -31,7 +36,10 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  height: 20rem;
+}
+
+.card-container {
+  @apply grid sm:grid-cols-2 sm:gap-5;
 }
 
 @layer utilities {
@@ -45,7 +53,7 @@ body {
   }
 
   .card {
-    @apply bg-white shadow-lg rounded-lg py-5 px-4 mb-6 before:absolute before:content-[''] before:bg-primaryColor before:p-1 before:left-0 before:top-0 before:bottom-0
+    @apply w-full bg-white shadow-lg rounded-lg py-5 px-4 mb-6 before:absolute before:content-[''] before:bg-primaryColor before:p-1 before:left-0 before:top-0 before:bottom-0
   }
 
   .card-active {

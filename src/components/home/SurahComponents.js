@@ -52,28 +52,29 @@ const SurahComponents = () => {
     return(
         <>
             {isWaitAnimation &&  <WaitAnimationComponent />}
-            
-            {
-                !isWaitAnimation && surah.length !== 0 && surah.map((surah, index) => (
-                    <div key={index} className="card relative" onClick={() => readDetailSurah(surah.nomor)}>
-                        <div className='flex justify-between items-center'>
-                            <div className='flex items-center space-x-4'>
-                                <div className='relative flex justify-center'>
-                                    <img src={heptagonImg} alt='ayat' className='w-12 h-12' />
-                                    <span className='absolute top-3 text-lg font-bold'>{index + 1}</span>
+            <div className="card-container">
+                {
+                    !isWaitAnimation && surah.length !== 0 && surah.map((surah, index) => (
+                        <div key={index} className="card relative w-1/3" onClick={() => readDetailSurah(surah.nomor)}>
+                            <div className='flex justify-between items-center'>
+                                <div className='flex items-center space-x-4'>
+                                    <div className='relative flex justify-center'>
+                                        <img src={heptagonImg} alt='ayat' className='w-12 h-12' />
+                                        <span className='absolute top-3 text-lg font-bold'>{index + 1}</span>
+                                    </div>
+
+                                    <div>
+                                        <h2 className='text-lg font-bold text-defaultFontColor'>{surah.namaLatin}</h2>
+                                        <h4 className='text-sm text-secondFontColor uppercase'>{surah.tempatTurun} - {surah.jumlahAyat} Ayat </h4>
+                                    </div>
                                 </div>
 
-                                <div>
-                                    <h2 className='text-lg font-bold text-defaultFontColor'>{surah.namaLatin}</h2>
-                                    <h4 className='text-sm text-secondFontColor uppercase'>{surah.tempatTurun} - {surah.jumlahAyat} Ayat </h4>
-                                </div>
+                                <h2 className="text-2xl font-bold text-defaultColor">{surah.nama}</h2>
                             </div>
-
-                            <h2 className="text-2xl font-bold text-defaultColor">{surah.nama}</h2>
                         </div>
-                    </div>
-                ))  
-            }
+                    ))  
+                }
+            </div>
         </>
     )
 }

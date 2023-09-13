@@ -20,7 +20,7 @@ function App() {
   const responsive = {
     desktop: {
       breakpoint: {
-        max: 3000,
+        max: 3600,
         min: 1024
       },
       items: 1
@@ -60,7 +60,7 @@ function App() {
             partialVisible={true}
             slidesToSlide={1}
             rtl={false}
-            containerClass="container"
+            containerClass=""
             centerMode={false}
             focusOnSelect={true}
             customDot={<Footer />}
