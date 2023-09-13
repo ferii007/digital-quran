@@ -177,7 +177,7 @@ const SurahPage = () => {
                                 <div className='card-2'>
                                     <h5 className='bg-defaultColor text-white w-8 h-8 rounded-full flex justify-center items-center text-sm sm:text-base'>{ayat.nomorAyat}</h5>
 
-                                    <div className='flex items-center space-x-3 text-defaultColor'>
+                                    <div className='flex items-center space-x-3 sm:space-x-5 text-defaultColor'>
                                     
                                         {
                                             audioStatus[ayat.nomorAyat] && isAudioPlaying ? 
