@@ -1,4 +1,6 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as actionCreators from './store/actions/index'
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 
@@ -7,8 +9,11 @@ import SurahPage from "./components/surah/SurahPage"
 import LoadingAnimationComponent from "./components/helper/LoadingAnimationComponent"
 import Footer from './components/Footer'
 import PrayPage from './components/pray/PrayPage'
+import { useEffect } from 'react'
 
 function App() {
+  const dispatch = useDispatch();
+	const { currentTime } = bindActionCreators(actionCreators, dispatch);
   const isReadSurah = useSelector((state) => state.readSurah.open);
   const isLoadingAnimation = useSelector((state) => state.loadingAnimation);
 
@@ -35,6 +40,11 @@ function App() {
       items: 1
     }
   };
+
+  useEffect(() => {
+      currentTime()
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <>

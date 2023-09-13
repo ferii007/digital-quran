@@ -36,7 +36,7 @@ const SurahComponents = () => {
             getDataSurahFromIndexedDB().then((data) => {
                 setTimeout(async () => {
                     if (data.length !== 0) {
-                        console.log('Data dari IndexedDB:', data);
+                        // console.log('Data dari IndexedDB:', data);
                         dataSurah(data)
                         waitAnimation(false)
                     }else {
