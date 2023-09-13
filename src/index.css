@@ -12,7 +12,7 @@
 }
 
 body {
-  @apply max-w-[860px] m-auto
+  @apply h-screen max-w-[860px] m-auto overflow-hidden
 }
 
 #root {

@@ -7,7 +7,7 @@ const HomePage = () => {
     const [activeCategory, setActiveCategory] = useState('surat')
 
     return(
-        <section className="bg-white h-full pb-20">
+        <section className="bg-white h-screen overflow-scroll pb-32">
             <HeaderPage />
             
             <div className="py-8">

@@ -121,7 +121,7 @@ const SurahPage = () => {
     };
       
     return(
-        <section className="bg-white h-full">
+        <section className="bg-white h-screen overflow-scroll">
             <div className='text-primaryColor pt-8 pb-4 sticky top-0 z-10 bg-white bg-opacity-50 backdrop-blur-md shadow-md'>
                 <div className='flex justify-between items-center px-5'>
                     <Icon icon="ic:twotone-arrow-back-ios" className='w-7 h-7 sm:w-8 sm:h-8' onClick={() => readSurah()} />
