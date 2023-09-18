@@ -10,7 +10,7 @@ import LoadingAnimationComponent from "./components/helper/LoadingAnimationCompo
 import Footer from './components/Footer'
 import PrayPage from './components/pray/PrayPage'
 import { useEffect } from 'react'
-import DoaPage from './components/doa/DoaPage'
+// import DoaPage from './components/doa/DoaPage'
 
 function App() {
   const dispatch = useDispatch();
@@ -79,7 +79,7 @@ function App() {
       )}
 
         {isReadSurah === true && <SurahPage />}
-        {isReadDoa === true && <DoaPage />}
+        {/* {isReadDoa === true && <DoaPage />} */}
       </main>
 
       {

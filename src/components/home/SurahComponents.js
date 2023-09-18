@@ -9,7 +9,7 @@ import { saveDataSurahToIndexedDB, getDataSurahFromIndexedDB } from "../helper/i
 
 const SurahComponents = () => {
     const dispatch = useDispatch();
-	const { dataSurah, readDetailSurah } = bindActionCreators(actionCreators, dispatch);
+	const { dataSurah, readDetailSurah, waitAnimation } = bindActionCreators(actionCreators, dispatch);
     const isWaitAnimation = useSelector((state) => state.waitAnimation);
     const surah = useSelector((state) => state.dataSurah);
 
@@ -23,14 +23,14 @@ const SurahComponents = () => {
             const response = await axios.get("https://equran.id/api/v2/surat");
             dataSurah(response.data.data)
             saveDataSurahToIndexedDB(response.data.data);
-            // waitAnimation(false)
+            waitAnimation(false)
         } catch (error) {
         
         }
     }
 
     const getDataSurah = async () => {
-        // waitAnimation(true)
+        waitAnimation(true)
 
         try {
             getDataSurahFromIndexedDB().then((data) => {
@@ -38,7 +38,7 @@ const SurahComponents = () => {
                     if (data.length !== 0) {
                         // console.log('Data dari IndexedDB:', data);
                         dataSurah(data)
-                        // waitAnimation(false)
+                        waitAnimation(false)
                     }else {
                         getSurah();
                     }

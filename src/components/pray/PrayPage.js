@@ -5,6 +5,7 @@ import { Icon } from "@iconify/react"
 
 import { getCurrentTime, getNextPrayerTime, formatDate, formatDateToSlashFormat } from '../helper/dataTime'
 import { useEffect, useState } from 'react'
+import PulseComponent from '../helper/PulseComponent'
 
 const PrayPage = () => {
     const dispatch = useDispatch();
@@ -56,34 +57,46 @@ const PrayPage = () => {
                 
                 <div className="text-white font-bold px-8 py-6 sm:py-20 flex flex-col gap-2">
                     <h3 className="text-3xl sm:text-4xl tracking-widest ">Jadwal Sholat</h3>
-                    <h4 className="text-xl sm:text-2xl tracking-wide capitalize">{lokasiJadwal}</h4>
+                    <h4 className={`text-xl sm:text-2xl tracking-wide capitalize ${lokasiJadwal ? 'animate-none' : 'animate-pulse'}`}>{`${lokasiJadwal ? lokasiJadwal : '.....'}`}</h4>
                     <h5 className="text-xl sm:text-2xl tracking-widest">{currentTime}</h5>
                 </div>
 
-                <h1 className="text-center text-white text-3xl sm:text-4xl font-bold tracking-wider mt-20 mb-16 capitalize">{nextPrayerTime}</h1>
+                <h1 className={`text-center text-white text-3xl sm:text-4xl font-bold tracking-wider mt-20 mb-16 capitalize ${nextPrayerTime ? 'animate-none' : 'animate-pulse'}`}>{`${nextPrayerTime ? nextPrayerTime : '.....'}`}</h1>
 
                 <div className="px-8">
                     <div className="flex items-center justify-between bg-slate-100 font-bold py-5 px-4 text-lg sm:text-xl tracking-wide rounded-full">
                         <Icon icon="ic:twotone-arrow-back-ios" className='w-7 h-7 sm:w-9 sm:h-9'  onClick={() => handleBackDay()} />
-                        {formattedDate}
+                        {`${formattedDate !== '1 Januari 1970' ? formattedDate : '.....'}`}
                         <Icon icon="ic:twotone-arrow-back-ios" className='w-7 h-7 sm:w-9 sm:h-9 rotate-180' onClick={() => handleNextDay()} />
                     </div>
                 </div>
 
-                <div className="text-white text-lg sm:text-xl font-bold tracking-wider py-10 sm:py-24 flex flex-col gap-5">
-                    {
-                        semuaJadwal.length !== 0 &&
-                        semuaJadwal.map((data, index) => (
-                            <div key={index} className="grid grid-cols-12 sm:grid-cols-12 px-6 sm:px-12 items-center">
-                                <div className='col-span-5 sm:col-span-5'>
-                                    <Icon icon={icon[index]} className="w-10 h-10 sm:w-12 sm:h-12 " />
-                                </div>
-                                <span className="col-span-5 sm:col-span-6 capitalize">{data[0]}</span>
-                                <span className="col-span-2 sm:col-span-1 text-right">{data[1]}</span>
-                            </div>
-                        ))
-                    }
-                </div>
+                {
+                    semuaJadwal.length !== 0 ? (
+                        <div className="text-white text-lg sm:text-xl font-bold tracking-wider py-10 sm:py-24 flex flex-col gap-5">
+                            {
+                                semuaJadwal.map((data, index) => (
+                                    <div key={index} className="grid grid-cols-12 sm:grid-cols-12 px-6 sm:px-12 items-center">
+                                        <div className='col-span-5 sm:col-span-5'>
+                                            <Icon icon={icon[index]} className="w-10 h-10 sm:w-12 sm:h-12 " />
+                                        </div>
+                                        <span className="col-span-5 sm:col-span-6 capitalize">{data[0]}</span>
+                                        <span className="col-span-2 sm:col-span-1 text-right">{data[1]}</span>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    ) : (
+                        <>
+                            <PulseComponent />
+                            <PulseComponent />
+                            <PulseComponent />
+                            <PulseComponent />
+                            <PulseComponent />
+                        </>
+                    )
+                }
+
             </section>
         </>
     )
