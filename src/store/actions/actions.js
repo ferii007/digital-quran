@@ -51,6 +51,15 @@ export const waitAnimation = (flag = null) => {
     }
 }
 
+export const loadingGetDataSholat = (flag = null) => {
+    return (dispatch) => {
+        dispatch({
+            type: 'loading_get_data_sholat',
+            payload: flag
+        })
+    }
+}
+
 export const dataSurah = (flag = null) => {
     return (dispatch) => {
         dispatch({
@@ -99,6 +108,8 @@ export const getJadwalSholatAPI = (dateSlashFormat, cityId = 1219) => async (dis
             type: 'data_pray_time',
             payload: data
         });
+
+        dispatch(loadingGetDataSholat(false));
     } catch (error) {
         
     }

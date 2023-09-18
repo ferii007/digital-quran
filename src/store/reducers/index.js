@@ -6,6 +6,7 @@ import dataSurahReducer from "./dataSurahReducer";
 import dataPrayTimeReducer from "./dataPrayTimeReducer";
 import currentTimeReducer from "./currentTimeReducer";
 import readDoaReducer from "./readDoaReducer";
+import loadingGetDataSholatReducer from "./loadingGetDataSholatReducer";
 
 export default combineReducers({
     readSurah: readSurahReducer,
@@ -15,4 +16,5 @@ export default combineReducers({
     dataPrayTime: dataPrayTimeReducer,
     currentTime: currentTimeReducer,
     readDoa: readDoaReducer,
+    loadingGetDataSholat: loadingGetDataSholatReducer,
 });

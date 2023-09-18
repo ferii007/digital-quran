@@ -9,7 +9,7 @@ import PulseComponent from '../helper/PulseComponent'
 
 const PrayPage = () => {
     const dispatch = useDispatch();
-	const { getJadwalSholatAPI } = bindActionCreators(actionCreators, dispatch);
+	const { getJadwalSholatAPI, loadingGetDataSholat } = bindActionCreators(actionCreators, dispatch);
     const lokasiJadwal = useSelector((state) => state.dataPrayTime.lokasi);
     const semuaJadwal = useSelector((state) => state.dataPrayTime.semuaJadwal);
     const jadwalSholat = useSelector((state) => state.dataPrayTime.jadwalSholat);
@@ -23,12 +23,14 @@ const PrayPage = () => {
     const formattedDate = formatDate(date)
 
     const handleNextDay = async () => {
+        loadingGetDataSholat(true);
         const newDate = new Date(currentDate);
         newDate.setDate(currentDate.getDate() + 1);
         setCurrentDate(newDate);
     }
 
     const handleBackDay = async () => {
+        loadingGetDataSholat(true);
         const newDate = new Date(currentDate);
         newDate.setDate(currentDate.getDate() - 1);
         setCurrentDate(newDate);
@@ -96,7 +98,6 @@ const PrayPage = () => {
                         </>
                     )
                 }
-
             </section>
         </>
     )

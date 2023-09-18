@@ -1,6 +1,6 @@
-import { readSurah, loadingAnimation, waitAnimation, dataSurah, readDetailSurah, currentTime, getJadwalSholatAPI, readDoa } from './actions';
+import { readSurah, loadingAnimation, waitAnimation, loadingGetDataSholat, dataSurah, readDetailSurah, currentTime, getJadwalSholatAPI, readDoa } from './actions';
 
 
 
 
-export { readSurah, loadingAnimation, waitAnimation, dataSurah, readDetailSurah, currentTime, getJadwalSholatAPI, readDoa }
+export { readSurah, loadingAnimation, waitAnimation, loadingGetDataSholat, dataSurah, readDetailSurah, currentTime, getJadwalSholatAPI, readDoa }

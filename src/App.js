@@ -10,6 +10,7 @@ import LoadingAnimationComponent from "./components/helper/LoadingAnimationCompo
 import Footer from './components/Footer'
 import PrayPage from './components/pray/PrayPage'
 import { useEffect } from 'react'
+import WaitAnimationComponent from './components/helper/WaitAnimationComponent'
 // import DoaPage from './components/doa/DoaPage'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
   const isReadSurah = useSelector((state) => state.readSurah.open);
   const isReadDoa = useSelector((state) => state.readDoa.open);
   const isLoadingAnimation = useSelector((state) => state.loadingAnimation);
+  const isLoadingGetDataSholat = useSelector((state) => state.loadingGetDataSholat);
 
   const responsive = {
     desktop: {
@@ -80,6 +82,15 @@ function App() {
 
         {isReadSurah === true && <SurahPage />}
         {/* {isReadDoa === true && <DoaPage />} */}
+
+        {
+          isLoadingGetDataSholat === true && 
+          <div className='bg-black bg-opacity-50 absolute top-0 bottom-0 left-0 right-0'>
+            <div className='translate-y-full'>
+              <WaitAnimationComponent />
+            </div>
+          </div>
+        }
       </main>
 
       {
